@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const cep = require('./cep.json');
-const ceps = cep.reduce((curr, next) => {
+const cepCep = cep.reduce((curr, next) => {
     curr[next.cep] = next;
     return curr;
 }, {});
@@ -11,11 +11,17 @@ app.get('/', (req, res) => {
     res.send(cep[0]);
 });
 
+app.get('/cidade/:cidade', (req, res) => {
+    const cidade = req.params.cidade;
+    const cepsFiltrado= cep.filter(c => c.cidade == cidade);
+    res.send(cepsFiltrado);
+});
+
 app.get('/:cep', (req, res) => {
-    const result = ceps[req.params.cep];
+    const result = cepCep[req.params.cep];
 
     if(result) {
-        res.send(ceps[req.params.cep]);
+        res.send(cepCep[req.params.cep]);
         return;
     }
 
