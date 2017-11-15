@@ -2,13 +2,15 @@
   "name": "cepapi",
   "version": "1.0.0",
   "description": "",
-  "main": "converter.js",
+  "main": "app.js",
   "dependencies": {
-    "csvtojson": "^1.0.0"
+    "csvtojson": "^1.0.0",
+    "express": "^4.16.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC"
