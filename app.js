@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const cep = require('./cep.json');
-const cepCep = cep.reduce((curr, next) => {
+const cepSrc = require('./cep.json');
+const ceps = cepSrc.reduce((curr, next) => {
     curr[next.cep] = next;
     return curr;
 }, {});
@@ -18,10 +18,10 @@ app.get('/cidade/:cidade', (req, res) => {
 });
 
 app.get('/:cep', (req, res) => {
-    const result = cepCep[req.params.cep];
+    const cep = ceps[req.params.cep];
 
-    if(result) {
-        res.send(cepCep[req.params.cep]);
+    if(cep) {
+        res.send(cep);
         return;
     }
 
