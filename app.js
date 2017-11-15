@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 app.get('/cidade/:cidade', (req, res) => {
     const cidade = req.params.cidade;
-    const cepsFiltrado= cep.filter(c => c.cidade == cidade);
+    const cepsFiltrado= cepSrc.filter(c => c.cidade == cidade);
     res.send(cepsFiltrado);
 });
 
