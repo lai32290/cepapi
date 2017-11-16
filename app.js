@@ -12,8 +12,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/cidade/:cidade', (req, res) => {
-    const cidade = req.params.cidade;
-    const cepsFiltrado= cepSrc.filter(c => c.cidade == cidade);
+    const cidade = req.params.cidade.toLowerCase();
+    const cepsFiltrado= cepSrc.filter(c => c.cidade.toLowerCase() == cidade);
     res.send(cepsFiltrado);
 });
 
